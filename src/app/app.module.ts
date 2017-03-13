@@ -1,24 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LocationComponent } from './location/location.component';
-import { HomeComponent } from './home/home.component';
+
+import { YelpService } from './yelp.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LocationComponent,
-    HomeComponent
+    LocationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    JsonpModule
   ],
-  providers: [],
+  providers: [YelpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
