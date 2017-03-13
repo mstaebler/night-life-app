@@ -6,17 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Local Night Life Meetup';
-  subTitle = 'Let everyone know where you are going tonight';
-  location: Location = {
-    id: 1,
-    name: 'titled kilt',
-    address: '123 somewhere'
-  }
-}
+  title = "Can't decide where to go tonight?";
+  subTitle = "Enter your zipcode to get started";
+  submitted = false;
+  zipcode = "";
 
-export class Location {
-  id: number;
-  name: string;
-  address: string;
+  onKey(event: any) {
+    this.zipcode = event.target.value;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+  }
 }
