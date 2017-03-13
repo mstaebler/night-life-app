@@ -24,7 +24,10 @@ export class AppComponent implements OnInit {
   getLocation() {
     this.YelpService.getLocation()
       .subscribe(
-        location => this.location = location,
+        location => {          
+          this.location = location
+          console.log('location', this.location)}
+          ,
         error => this.errorMessage = <any>error);
   }
   

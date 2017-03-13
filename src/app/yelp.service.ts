@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Jsonp } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -18,8 +18,8 @@ export class YelpService {
                     .catch(this.handleError);
   }
   private extractData(res: Response) {
-    console.log('res',res.json())
     let body = res.json();
+    console.log('body', body, body.name)
     return body || { };
   }
   private handleError (error: Response | any) {
