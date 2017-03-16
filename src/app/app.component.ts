@@ -16,25 +16,28 @@ export class AppComponent implements OnInit {
   errorMessage: string;
   location: Location[];
   mode = 'Observable';
+  going = 0;
 
   constructor( private YelpService: YelpService) {}
 
-  ngOnInit() {  }
+  ngOnInit() { 
+    this.zipcode = localStorage.getItem("zipcode");
+    if(this.zipcode !== "")
+      this.getLocation();
+   }
 
   getLocation() {
+    localStorage.setItem("zipcode", this.zipcode)
     this.YelpService.getLocation(this.zipcode)
       .subscribe(
         location => {          
-          this.location = location
-          console.log('location', this.location)}
-          ,
+          this.location = location},
         error => this.errorMessage = <any>error);
   }
   
 
   onKey(event: any) {
     this.zipcode = event.target.value;
-    console.log(this.location);
   }
 
   onSubmit() {

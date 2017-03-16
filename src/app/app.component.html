@@ -1,14 +1,16 @@
-<h1>
-  {{title}}
-</h1>
-<h2>
-  {{subTitle}}
-</h2>
-<form (ngSubmit)="onSubmit()">
-  <input (keyup)="onKey($event)" type="text" id="zipcode" name="zipcode" />
-  <input type="submit" value="submit" />
-</form>
+<div>
+  <h1>
+    {{title}}
+  </h1>
+  <h2>
+    {{subTitle}}
+  </h2>
+  <form (ngSubmit)="onSubmit()">
+    <input (keyup)="onKey($event)" type="text" id="zipcode" name="zipcode" />
+    <input type="submit" value="submit" />
+  </form>
 
-<ul>
-  <li *ngFor="let loc of location">{{loc.name}}</li>
-</ul>
+  <ul>
+    <li *ngFor="let loc of location"><table><tr><td><img src={{loc.image_url}} width="150" height="150" /></td><td><span class="title">{{loc.name}}</span><br />Price:{{loc.price}}<br />Rating:{{loc.rating}}<br />Address:{{loc.location.address1}}</td><td>Going:{{going}}</td></tr></table></li>
+  </ul>
+</div>
