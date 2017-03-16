@@ -17,7 +17,6 @@ function yelpAuth(req, res) {
     yelp.accessToken(process.env.YELP_ID, process.env.YELP_SECRET)
         .then(response => {
             token = response.jsonBody.access_token
-            console.log('token',token)
             yelpSearch(req.query.term, req.query.zipcode, res)
         } )
         .catch(error => console.log(error))

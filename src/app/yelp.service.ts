@@ -9,18 +9,17 @@ import { Location } from './location';
 
 @Injectable()
 export class YelpService {
-  private yelpUrl = 'http://demo8743424.mockable.io/';
+  private yelpUrl = '/api/yelp?term=bar&zipcode=';
   constructor(private http: Http) {}
 
-  getLocation(): Observable<Location[]> {
-    return this.http.get(this.yelpUrl)
+  getLocation(zip): Observable<Location[]> {
+    return this.http.get(this.yelpUrl+zip)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   private extractData(res: Response) {
     let body = res.json();
-    console.log('body', body, body.name)
-    return body || { };
+    return body.businesses || { };
   }
   private handleError (error: Response | any) {
     let errMsg: string;

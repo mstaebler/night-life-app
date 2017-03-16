@@ -8,7 +8,7 @@
   <input (keyup)="onKey($event)" type="text" id="zipcode" name="zipcode" />
   <input type="submit" value="submit" />
 </form>
-{{submitted}}
-{{zipcode}}
 
-<p *ngIf="location !== undefined">{{location.name}}</p>
+<ul>
+  <li *ngFor="let loc of location">{{loc.name}}</li>
+</ul>

@@ -19,10 +19,10 @@ export class AppComponent implements OnInit {
 
   constructor( private YelpService: YelpService) {}
 
-  ngOnInit() { this.getLocation(); }
+  ngOnInit() {  }
 
   getLocation() {
-    this.YelpService.getLocation()
+    this.YelpService.getLocation(this.zipcode)
       .subscribe(
         location => {          
           this.location = location
@@ -39,5 +39,7 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    if(this.zipcode.length === 5 && !isNaN(+this.zipcode))
+      this.getLocation();
   }
 }
