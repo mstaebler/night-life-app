@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = "Can't decide where to go tonight?";
   subTitle = "Enter your zipcode to get started";
   submitted = false;
-  zipcode = "";
+  zipcode: string;
   errorMessage: string;
   location: Location[];
   mode = 'Observable';
@@ -20,14 +20,19 @@ export class AppComponent implements OnInit {
 
   constructor( private YelpService: YelpService) {}
 
-  ngOnInit() { 
-    this.zipcode = localStorage.getItem("zipcode");
-    if(this.zipcode !== "")
-      this.getLocation();
+  ngOnInit() {
+    if(localStorage.hasOwnProperty('zipcode')){
+      this.zipcode = localStorage.getItem("zipcode");
+      if(this.zipcode !== "")
+        this.getLocation();
+    } else {
+      this.zipcode = '';
+    } 
    }
 
   getLocation() {
-    localStorage.setItem("zipcode", this.zipcode)
+    localStorage.setItem("zipcode", this.zipcode);
+    console.log(localStorage);
     this.YelpService.getLocation(this.zipcode)
       .subscribe(
         location => {          
