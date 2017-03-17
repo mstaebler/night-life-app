@@ -10,7 +10,7 @@ export class UserService {
   constructor(private http: Http) {}
 
   getPatrons(id): Observable<Location[]> {
-    return this.http.get('/api/users')
+    return this.http.get(`/api/user/bar/${id}/users`)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

@@ -10,6 +10,7 @@ var passport = require('passport')
 
 var loginRouter = require('./server/routes/login') 
 var yelpRouter = require('./server/routes/yelp')
+var userRouter = require('./server/routes/user')
 var config = require('./server/controllers/config');
 require('dotenv').config();
 
@@ -36,6 +37,7 @@ app.use(passport.session())
 
 app.use('/api/login', loginRouter)
 app.use('/api/yelp', yelpRouter)
+app.use('/api/user', userRouter)
 
 
 
