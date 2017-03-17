@@ -45,7 +45,6 @@ passport.use(new TwitterStrategy({
     callbackURL: process.env.TWITTER_CALLBACK
   },
   function(token, tokenSecret, profile, done) {
-    console.log("profile.id", profile.id)
     patrons.update({id: profile.id})
     done(null, profile)
   }

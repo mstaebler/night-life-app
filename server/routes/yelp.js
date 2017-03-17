@@ -2,6 +2,7 @@ var express = require('express');
 var jwt = require('jsonwebtoken');
 var config = require('../config');
 var yelp = require('yelp-fusion');
+var patrons = require('../controllers/patrons')
 require('dotenv').config()
 
 let token = undefined;
@@ -10,6 +11,10 @@ const yelpRouter = express.Router();
 module.exports = yelpRouter;
 
 yelpRouter.get('/', (req, res) => {
+    if(req.user){
+        patrons.update({id: req.user.id, term: req.query.term, zipcode: req.query.zipcode});
+    }
+    
     token ? yelpSearch(req.query.term, req.query.zipcode, res) : yelpAuth(req, res) 
 });
 
