@@ -25,9 +25,11 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
     "jsonwebtoken": "^7.3.0",
+    "mongod": "^2.0.0",
     "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-twitter": "^1.0.4",
     "path": "^0.12.7",
-    "qs": "^6.4.0",
     "rxjs": "^5.2.0",
     "yelp-fusion": "^1.0.3",
     "zone.js": "^0.7.6"

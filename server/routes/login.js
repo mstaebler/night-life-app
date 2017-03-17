@@ -53,3 +53,7 @@ loginRouter.post('/', function (request, response, next) {
 
     });
 });
+
+loginRouter.get('/twitter/callback', (req, res, next) => {
+    
+})
