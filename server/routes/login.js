@@ -10,5 +10,6 @@ loginRouter.get('/twitter/callback', passport.authenticate('twitter', { successR
 loginRouter.get('/auth/twitter', passport.authenticate('twitter'));
 
 loginRouter.get('/auth/check', (req, res, next) => {
+    console.log('req.user:',req.user)
     req.user ? res.json({loggedin: true}) : res.json({loggedin: false})
 })

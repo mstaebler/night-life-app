@@ -1,6 +1,5 @@
 var Promise = require('bluebird');
 var MongoClient = require('mongodb').MongoClient;
-var ObjectId = require('mongodb').ObjectId;
 var config = require('./config');
 
 module.exports = {
@@ -10,7 +9,7 @@ module.exports = {
     },
     
     findById: (id) => {
-        return Promise.resolve(config.patrons.find({_id: ObjectId(id)}).limit(1).toArray());
+        return Promise.resolve(config.patrons.find({id}).limit(1).toArray());
     },
 
     create: (params) => {
@@ -18,13 +17,12 @@ module.exports = {
     },
 
     update: (params) => {
-        var poll = params;
-        poll._id = ObjectId(params._id);
-        return Promise.resolve(config.patrons.findOneAndUpdate({_id: ObjectId(params._id)},poll));
+        var patron = params;
+        return Promise.resolve(config.patrons.findOneAndUpdate({id: patron.id},patron,{upsert:true}));
     },
 
     delete: (id) => {
-        return Promise.resolve(config.patrons.findOneAndDelete({_id: ObjectId(id)}));
+        return Promise.resolve(config.patrons.findOneAndDelete({id}));
     }
 
 }

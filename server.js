@@ -10,7 +10,12 @@ var passport = require('passport')
 
 var loginRouter = require('./server/routes/login') 
 var yelpRouter = require('./server/routes/yelp')
-require('dotenv').config()
+var config = require('./server/controllers/config');
+require('dotenv').config();
+
+var patrons = require('./server/controllers/patrons')
+
+config.connect().then(output => console.log('connection success'));
 
 const app = express()
 
@@ -21,9 +26,8 @@ app.use(body.json())
 app.use(require('cookie-parser')())
 app.use(body.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'dist')))
-// Use the session middleware
 app.use(require('express-session')({
-  secret: 'keyboard cat',
+  secret: 'keyboard kitten',
   resave: true,
   saveUninitialized: true
 }))
@@ -41,7 +45,8 @@ passport.use(new TwitterStrategy({
     callbackURL: process.env.TWITTER_CALLBACK
   },
   function(token, tokenSecret, profile, done) {
-    console.log(token, tokenSecret, profile)
+    console.log("profile.id", profile.id)
+    patrons.update({id: profile.id})
     done(null, profile)
   }
 ));
