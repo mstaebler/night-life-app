@@ -6,8 +6,8 @@ module.exports = {
     connect: () => {
         return MongoClient.connectAsync(process.env.MONGO_CONNECTION_STRING)
             .then(connection => {
-                module.exports.polls = connection.collection('locations');
-                module.exports.users = connection.collection('patrons');
+                module.exports.locations = connection.collection('locations');
+                module.exports.patrons = connection.collection('patrons');
             });
     }
 }

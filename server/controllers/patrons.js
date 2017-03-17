@@ -6,25 +6,25 @@ var config = require('./config');
 module.exports = {
     
     find: (params) => {
-        return Promise.resolve(config.polls.find(params).toArray());
+        return Promise.resolve(config.patrons.find(params).toArray());
     },
     
     findById: (id) => {
-        return Promise.resolve(config.polls.find({_id: ObjectId(id)}).limit(1).toArray());
+        return Promise.resolve(config.patrons.find({_id: ObjectId(id)}).limit(1).toArray());
     },
 
     create: (params) => {
-        return Promise.resolve(config.polls.insertOne(params));
+        return Promise.resolve(config.patrons.insertOne(params));
     },
 
     update: (params) => {
         var poll = params;
         poll._id = ObjectId(params._id);
-        return Promise.resolve(config.polls.findOneAndUpdate({_id: ObjectId(params._id)},poll));
+        return Promise.resolve(config.patrons.findOneAndUpdate({_id: ObjectId(params._id)},poll));
     },
 
     delete: (id) => {
-        return Promise.resolve(config.polls.findOneAndDelete({_id: ObjectId(id)}));
+        return Promise.resolve(config.patrons.findOneAndDelete({_id: ObjectId(id)}));
     }
 
 }
