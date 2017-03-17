@@ -28,7 +28,13 @@ export class AppComponent implements OnInit {
     } else {
       this.zipcode = '';
     } 
-   }
+  }
+
+  click(event, id) {
+    event.preventDefault();
+    console.log(id);
+    event.target.textConent = parseInt(event.target.textContent) + 1;
+  }
 
   getLocation() {
     localStorage.setItem("zipcode", this.zipcode);

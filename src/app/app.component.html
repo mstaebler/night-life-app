@@ -11,6 +11,6 @@
   </form>
 
   <ul>
-    <li *ngFor="let loc of location"><table><tr><td><img src={{loc.image_url}} width="150" height="150" /></td><td><span class="title">{{loc.name}}</span><br />Price:{{loc.price}}<br />Rating:{{loc.rating}}<br />Address:{{loc.location.address1}}</td><td>Going:{{going}}</td></tr></table></li>
+    <li *ngFor="let loc of location"><table><tr><td><img src={{loc.image_url}} width="150" height="150" /></td><td><span class="title">{{loc.name}}</span><br />Price:{{loc.price}}<br />Rating:{{loc.rating}}<br />Address:{{loc.location.address1}}</td><td><button (click)="click($event, loc.id)">Going: 0</button></td></tr></table></li>
   </ul>
 </div>
