@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { YelpService } from './yelp.service';
+import { UserService } from './user.service';
 
 import { Location } from './location';
 
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
   mode = 'Observable';
   going = 0;
 
-  constructor( private YelpService: YelpService) {}
+  constructor( private YelpService: YelpService, private UserService: UserService) {}
 
   ngOnInit() {
     if(localStorage.hasOwnProperty('zipcode')){
@@ -33,7 +34,11 @@ export class AppComponent implements OnInit {
   click(event, id) {
     event.preventDefault();
     console.log(id);
-    event.target.textConent = parseInt(event.target.textContent) + 1;
+    this.UserService.getPatrons(id)
+      .subscribe(
+        patrons => {          
+          console.log(patrons)},
+        error => this.errorMessage = <any>error);
   }
 
   getLocation() {

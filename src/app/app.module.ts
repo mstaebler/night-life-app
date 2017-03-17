@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LocationComponent } from './location/location.component';
 
 import { YelpService } from './yelp.service';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { YelpService } from './yelp.service';
     HttpModule,
     JsonpModule
   ],
-  providers: [YelpService],
+  providers: [YelpService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

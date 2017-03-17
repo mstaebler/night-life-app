@@ -17,8 +17,7 @@ module.exports = {
     },
 
     update: (params) => {
-        var location = params;
-        return Promise.resolve(config.locations.findOneAndUpdate({id: params.id},location));
+        return Promise.resolve(config.locations.findOneAndUpdate({id: params.id},params));
     },
 
     delete: (id) => {
