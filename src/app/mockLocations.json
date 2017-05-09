@@ -1,7 +1,7 @@
 {
-    id: 1,
-    name: 'dennys',
-    address: '123',
-    rating: 5,
-    attending: 1
+    "id": 1,
+    "name": "dennys",
+    "address": 123,
+    "rating": 5,
+    "attending": 1
 }

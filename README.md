@@ -25,3 +25,9 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## TODO: 
+
+User Story: As an authenticated user, I can add myself to a bar to indicate I am going there tonight.
+
+User Story: As an authenticated user, I can remove myself from a bar if I no longer want to go there.
