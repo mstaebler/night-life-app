@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   location: Location[];
   mode = 'Observable';
   going = 0;
+  loggedIn = false;
 
   constructor( private YelpService: YelpService, private UserService: UserService) {}
 
@@ -28,9 +29,13 @@ export class AppComponent implements OnInit {
         this.getLocation();
     } else {
       this.zipcode = '';
-    } 
+    }
+    this.loggedInCheck()
   }
 
+  loggedInCheck(){
+    console.log(this.UserService.logInCheck())
+  }
   click(event, id) {
     event.preventDefault();
     console.log(id);

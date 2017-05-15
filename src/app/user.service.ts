@@ -10,11 +10,21 @@ export class UserService {
   constructor(private http: Http) {}
 
   getPatrons(id): Observable<Location[]> {
-    return this.http.get(`/api/user/bar/${id}/users`)
+    return this.http.post(`/api/user/users`, {id})
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
+  logInCheck(): Observable<Login[]> {
+    return this.http.get('/api/login/auth/check')
+              .map(this.check)
+              .catch(this.handleError)
+  }
+  
+  private check(res: Response) {
+    let loggedIn = res.json();
+    return loggedIn.loggedin || false;
+  }
   private extractData(res: Response) {
     let body = res.json();
     return body.businesses || { };
