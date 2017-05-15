@@ -3,6 +3,7 @@ import { YelpService } from './yelp.service';
 import { UserService } from './user.service';
 
 import { Location } from './location';
+import { Login } from './login';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,9 @@ export class AppComponent implements OnInit {
   zipcode: string;
   errorMessage: string;
   location: Location[];
+  login: Login;
   mode = 'Observable';
   going = 0;
-  loggedIn = false;
 
   constructor( private YelpService: YelpService, private UserService: UserService) {}
 
@@ -34,7 +35,12 @@ export class AppComponent implements OnInit {
   }
 
   loggedInCheck(){
-    console.log(this.UserService.logInCheck())
+    this.UserService.logInCheck()
+      .subscribe(
+        login => {
+          console.log(login)
+        },
+        error => this.errorMessage = <any>error);
   }
   click(event, id) {
     event.preventDefault();

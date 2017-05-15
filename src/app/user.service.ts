@@ -15,12 +15,12 @@ export class UserService {
                     .catch(this.handleError);
   }
 
-  logInCheck(): Observable<Login[]> {
+  logInCheck(): Observable<any[]> {
     return this.http.get('/api/login/auth/check')
               .map(this.check)
               .catch(this.handleError)
   }
-  
+
   private check(res: Response) {
     let loggedIn = res.json();
     return loggedIn.loggedin || false;

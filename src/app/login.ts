@@ -1,3 +1,3 @@
 export class Login {
-    loggedin: boolean
+    loggedin: boolean;
 }

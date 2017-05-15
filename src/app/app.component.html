@@ -9,14 +9,14 @@
     <input (keyup)="onKey($event)" type="text" id="zipcode" name="zipcode" />
     <input type="submit" value="submit" />
   </form>
-  <a *ngIf="!loggedIn" href="http://127.0.0.1:3000/api/login/auth/twitter" >Log In</a>
+  <a *ngIf="login" href="http://127.0.0.1:3000/api/login/auth/twitter">Log In</a>
   <ul>
     <li *ngFor="let loc of location">
       <table>
         <tr>
           <td><img src={{loc.image_url}} width="150" height="150" /></td>
           <td><span class="title">{{loc.name}}</span><br />Price:{{loc.price}}<br />Rating:{{loc.rating}}<br />Address:{{loc.location.address1}}</td>
-          <td><button [disabled]="!loggedIn" (click)="click($event, loc.id)">Going: 0</button></td>
+          <td><button [disabled]="login" (click)="click($event, loc.id)">Going: 0</button></td>
         </tr>
       </table>
     </li>
